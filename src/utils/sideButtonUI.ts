@@ -1,7 +1,7 @@
 import {AdvancedDynamicTexture, Button, Control, StackPanel} from '@babylonjs/gui'
 import {Scene} from "@babylonjs/core";
 
-type ButtonInfo = { text: string, onClick: () => void }
+type ButtonInfo = { text: string, onClick: () => any }
 
 const createSidePanel = (scene: Scene, buttonInfoList: ButtonInfo[]) => {
 	const advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI(

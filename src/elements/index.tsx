@@ -6,10 +6,19 @@ export default () => {
 	return (
 		<div>
 			<p>
-				<button onClick={() => navigate("/scene1")}>Scene 1</button>
+				<button onClick={() => navigate("/A")}>Scene 1</button>
 			</p>
 			<p>
-				<button onClick={() => navigate("/scene2")}>Scene 2</button>
+				<button onClick={() => navigate("/B")}>Scene 2</button>
+			</p>
+			<p>
+				<button onClick={() => navigate("/D")}>Scene 4</button>
+			</p>
+			<p>
+				<button onClick={() => navigate("/E")}>Scene 5</button>
+			</p>
+			<p>
+				<button onClick={() => navigate("/F")}>Scene 6</button>
 			</p>
 		</div>
 	)
