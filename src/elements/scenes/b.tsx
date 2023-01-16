@@ -1,18 +1,21 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {
-	AbstractMesh,
-	ArcRotateCamera, AxesViewer, Axis, Color3,
+	ArcRotateCamera,
+	AxesViewer,
+	Axis,
+	Color3,
 	Engine,
 	HemisphericLight,
-	Material,
-	MeshBuilder, Ray, RayHelper,
+	MeshBuilder,
+	Ray,
+	RayHelper,
 	Scene,
-	StandardMaterial, TransformNode,
+	StandardMaterial,
 	Vector3
 } from "@babylonjs/core";
-import {Debug} from "@babylonjs/core/Legacy/legacy";
 
 const SceneB: React.FC = () => {
+	const [intersected, setIntersected] = useState(false)
 	const reactCanvas = useRef(null)
 	const startEngineLoop = (canvas: React.MutableRefObject<null>, engine: Engine, scene: Scene) => {
 		// Light
@@ -65,12 +68,14 @@ const SceneB: React.FC = () => {
 			const rayHelper = new RayHelper(ray)
 			rayHelper.attachToMesh(spinBox, new Vector3(1, 0, 1))
 			rayHelper.show(scene)
+			
 			const interval = setInterval(() => {
 				rayHelper.dispose()
 				clearInterval(interval)
 			}, 100)
 			
 			console.log(ray.intersectsMesh(targetCylinder).hit)
+			setIntersected(ray.intersectsMesh(targetCylinder).hit)
 		})
 		
 	}
@@ -114,7 +119,12 @@ const SceneB: React.FC = () => {
 		};
 	}, [])
 	return (
-		<canvas style={{width: '90vw', height: '90vh'}} ref={reactCanvas}></canvas>
+		<div>
+			<canvas style={{width: '90vw', height: '90vh'}} ref={reactCanvas}></canvas>
+			<div>
+				<p>Ray intersects with cylinder: {intersected + ""}</p>
+			</div>
+		</div>
 	)
 }
 

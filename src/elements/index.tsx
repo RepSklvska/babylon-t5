@@ -12,6 +12,9 @@ export default () => {
 				<button onClick={() => navigate("/B")}>Scene 2</button>
 			</p>
 			<p>
+				<button onClick={() => navigate("/C")}>Scene 3</button>
+			</p>
+			<p>
 				<button onClick={() => navigate("/D")}>Scene 4</button>
 			</p>
 			<p>
